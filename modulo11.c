@@ -9,7 +9,6 @@ int main (void)
   printf("Geben Sie eine Kontonummer ein:\n");
   scanf("%s", kontonummer);
   fflush(stdin); //Standard Input Wert leeren
-
   int laenge = strlen(kontonummer);
 
   for (int i = 2, j = laenge; j >= 1; i++, j--)
