@@ -3,7 +3,7 @@
 
 int main (void)
 {
-  char kontonummer[31];
+  char kontonummer[31+1];
   int summe, pruefziffer;
 
   printf("Geben Sie eine Kontonummer ein:\n");
@@ -27,6 +27,8 @@ int main (void)
     pruefziffer = 0;
   }
 
-  kontonummer[laenge] = pruefziffer + '0';
+  char c[10];
+  c[0] = pruefziffer + '0';
+  strcat(kontonummer, c);
   printf("%s\n", kontonummer);
 }
