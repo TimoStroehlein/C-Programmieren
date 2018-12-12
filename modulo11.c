@@ -22,10 +22,7 @@ int main (void)
   int rest = summe % 11;
   pruefziffer = 11 - rest;
 
-  if (pruefziffer >= 10)
-  {
-    pruefziffer = 0;
-  }
+  if (pruefziffer >= 10) pruefziffer = 0;
 
   char c[10];
   c[0] = pruefziffer + '0';
