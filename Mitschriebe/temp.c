@@ -19,19 +19,20 @@ void up_datum (char *datum)
   zeit = localtime(&sec);  //Legt Struktur an
   switch (zeit -> tm_wday)
   {
-    case 0: strcpy(datum, "Sonntag, den"); break;
-    case 1: strcpy(datum, "Montag, den"); break;
-    case 2: strcpy(datum, "Dienstag, den"); break;
-    case 3: strcpy(datum, "Mittwoch, den"); break;
-    case 4: strcpy(datum, "Donnerstag, den"); break;
-    case 5: strcpy(datum, "Freitag, den"); break;
-    case 6: strcpy(datum, "Samstag, den"); break;
+    case 0: strcpy(datum, "Sonntag, den "); break;
+    case 1: strcpy(datum, "Montag, den "); break;
+    case 2: strcpy(datum, "Dienstag, den "); break;
+    case 3: strcpy(datum, "Mittwoch, den "); break;
+    case 4: strcpy(datum, "Donnerstag, den "); break;
+    case 5: strcpy(datum, "Freitag, den "); break;
+    case 6: strcpy(datum, "Samstag, den "); break;
 
     default: printf("Fehler");
   }
   itoa(zeit -> tm_mday, htext, 10); //Zahl, Text (z.B. 13), Basis
   strcat(datum, htext);
   strcat(datum, ".");
+  printf("%s", datum);
 
   switch (zeit -> tm_mon)
   {
