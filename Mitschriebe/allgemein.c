@@ -156,7 +156,7 @@ zahl = zahl - 48;
 int i = 42;
 int *zi = &i;       //Zeiger zeigt auf i
 int **zzi = &zi;    //Zeiger zeigt auf zi
-int ***zzzi = &zzi; //Zeiger zeigt auf  zzi
+int ***zzzi = &zzi; //Zeiger zeigt auf zzi
 
 //Funktionen und Unterprogramme
 int main(void)
