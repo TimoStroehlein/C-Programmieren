@@ -1,5 +1,4 @@
 #include<stdio.h>
-#include<stdlib.h>
 #include<string.h>
 #include<time.h>
 
@@ -36,18 +35,18 @@ void up_datum (char *datum)
 
   switch (zeit -> tm_mon)
   {
-    case 0: strcpy(datum, "Januar "); break;
-    case 1: strcpy(datum, "Februar "); break;
-    case 2: strcpy(datum, "März "); break;
-    case 3: strcpy(datum, "April "); break;
-    case 4: strcpy(datum, "Mai "); break;
-    case 5: strcpy(datum, "Juni "); break;
-    case 6: strcpy(datum, "Juli "); break;
-    case 7: strcpy(datum, "August "); break;
-    case 8: strcpy(datum, "September "); break;
-    case 9: strcpy(datum, "Oktober "); break;
-    case 10: strcpy(datum, "November "); break;
-    case 11: strcpy(datum, "Dezember "); break;
+    case 0: strcpy(datum, " Januar "); break;
+    case 1: strcpy(datum, " Februar "); break;
+    case 2: strcpy(datum, " März "); break;
+    case 3: strcpy(datum, " April "); break;
+    case 4: strcpy(datum, " Mai "); break;
+    case 5: strcpy(datum, " Juni "); break;
+    case 6: strcpy(datum, " Juli "); break;
+    case 7: strcpy(datum, " August "); break;
+    case 8: strcpy(datum, " September "); break;
+    case 9: strcpy(datum, " Oktober "); break;
+    case 10: strcpy(datum, " November "); break;
+    case 11: strcpy(datum, " Dezember "); break;
 
     default: printf("Fehler");
   }
