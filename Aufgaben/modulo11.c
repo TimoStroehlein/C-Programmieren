@@ -28,4 +28,6 @@ int main (void)
   c[0] = pruefziffer + '0';
   strcat(kontonummer, c);
   printf("%s\n", kontonummer);
+
+  return 42;
 }

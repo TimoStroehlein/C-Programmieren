@@ -48,6 +48,7 @@ int main (void)
 
 	printf("---%s---\n", namen[1]);
 
-
 	getchar();
+
+	return 42;
 }

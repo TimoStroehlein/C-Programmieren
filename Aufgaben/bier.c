@@ -11,4 +11,6 @@ int main(void)
 		printf("Bei einer Hoehe von %i mm betraegt das Volumen %.3f Liter!\n", i, liter);
 		liter = liter + volumen;
 	}
+
+	return 42;
 }
