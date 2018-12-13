@@ -117,7 +117,25 @@ int *zi = &i;       //Zeiger zeigt auf i
 int **zzi = &zi;    //Zeiger zeigt auf zi
 int ***zzzi = &zzi; //Zeiger zeigt auf  zzi
 
-//String
+//Funktionen und Unterprogramme
+int main(void)
+{
+  int a = 7, b = 4;
+  float erg;
+  char bu = 'A';
+  char text[80+1];
+  strcpy(text, "Hannes");
+  erg = up(a, &b, bu, &bu, text);
+}
+
+float up(int a, int *b, char bu, char *bu, char *text)
+{
+  float erg;
+  erg = a + *b + bu + *bu + strlen(text);
+  return erg;
+}
+
+//Zeiger in Zeiger
 char namen[3][5+1];
 
 printf("%d, %d, %d, %d", i, *zi, **zzi, ***zzzi);  //42, 42, 42, 42
@@ -126,3 +144,78 @@ i = 33;
 *zi = 43;
 **zzi = 45;
 ***zzzi = 99;
+
+//Strukturen bzw. Unions
+//(1) Real Existent
+struct
+{
+  char name[20+1];
+  char vname[20+1];
+  int par;
+  float gehalt;
+  double bauchweite;
+  int farbe[3];
+}dhler;
+}dhler[30];
+dhler.gehalt = 10.5;
+strcpy(dhler.name, "Hannes");
+dhler[3].farbe[2] = 19;
+
+//(2) Muster
+struct m_dhler
+{
+  char name[20+1];
+  char vname[20+1];
+  int par;
+  float gehalt;
+  double bauchweite;
+  int farbe[3];
+};
+struct m_dhler hannes, TINF18B[29], *zdhler, hannes.gehalt = 2.30;
+
+//(3) Eigener Datentyp
+typedef struct
+{
+  char name[20+1];
+  char vname[20+1];
+  int par;
+  float gehalt;
+  double bauchweite;
+  int farbe[3];
+}t_dhler;
+t_dhler hannes, TINF18B[25], *z
+//Beispiel
+typedef struct m_dhler
+{
+  struct m_dhler *davor;
+  struct m_dhler *danach;
+}t_dhler;
+t_dhler *mom;
+mom = (t_dhler*)malloc(sizeof(t_dhler));
+mom -> gehalt = 3.90;
+
+//Beispiel
+#include<time.h>
+
+main (void)
+{
+  char datum[80+1];
+  up_datum(datum);
+  printf("\n%s", datum);
+}
+void up_datum (char *datum)
+{
+  char htext[80+1];
+  struct tm *zeit;
+  long sec;
+  time(&sec); //Sekunden seit 1970
+  zeit = localtime(&sec);  //Legt Struktur an
+  switch (zeit -> tm_wday)
+  {
+    case 0: strcpy(datum, "Sonntag, den"); break;
+    case 1: strcpy(datum, "Montag, den"); break;
+    default: printf("Fehler");
+  }
+}
+itoa(zeit -> tm_wday, htext, 10); //Zahl, Text (z.B. 13), Basis
+strcat(datum, htext);
