@@ -13,7 +13,7 @@ int Stringkopie (char *t2, char *t1)
 {
   int laenge, i;
   laenge = Stringlaenge(t1);
-  
+
   for (i = 0;i < laenge; i++)
   {
     t2[i] = t1[i];
