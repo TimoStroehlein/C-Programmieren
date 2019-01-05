@@ -1,7 +1,7 @@
 #include<stdio.h>
 #include<string.h>
 
-int main (void)
+void main (void)
 {
   char kontonummer[31+1];
   int summe, pruefziffer;
@@ -28,6 +28,4 @@ int main (void)
   c[0] = pruefziffer + '0';
   strcat(kontonummer, c);
   printf("%s\n", kontonummer);
-
-  return 42;
 }

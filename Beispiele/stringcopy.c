@@ -1,6 +1,10 @@
 #include<stdio.h>
 
-int main (void)
+int Stringkopie(char *t2, char *t1);
+void Stringkopie2(char *t2, char *t1);
+int Stringlaenge(char *t);
+
+void main (void)
 {
   int e;
   char t1[80+1], t2[80+1];

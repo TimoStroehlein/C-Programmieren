@@ -2,6 +2,8 @@
 #include<string.h>
 #include<time.h>
 
+void up_datum(char *datum);
+
 void main (void)
 {
   char datum[80+1];

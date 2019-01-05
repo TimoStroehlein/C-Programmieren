@@ -2,7 +2,7 @@
 #include<string.h>
 #include<stdlib.h>
 
-int main (void)
+void main (void)
 {
   char namen[2][20+1];
   int zufallsZahl, untergrenze = 1, obergrenze = 1000, zuege = 0, eingabe = 0, gewinner, verlierer, zufallsInit;
@@ -45,6 +45,4 @@ int main (void)
   printf("%s hat gewonnen\n", gewinner);
   printf("%s bezahlt den Kaffee\n", verlierer);
   printf("Es wurden %d Zuege benoetigt\n", zuege);
-
-  return 42;
 }

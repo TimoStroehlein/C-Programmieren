@@ -1,7 +1,7 @@
 #include<stdio.h>
 #include<string.h>
 
-int main (void)
+void main (void)
 {
 	int a, b, c, d, e, tag;
 	int jahr = 1900;
@@ -49,6 +49,4 @@ int main (void)
 	printf("---%s---\n", namen[1]);
 
 	getchar();
-
-	return 42;
 }

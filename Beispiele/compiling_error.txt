@@ -1,0 +1,43 @@
+C:\Users\Timo Str�hlein\OneDrive - Duale Hochschule Baden-W�rttemberg Stuttgart\GitHub\C-Programmieren\Beispiele\doppelt_verkettete_liste.c:5:18: error: unknown type name 't_feld'
+ void up_listeAdd(t_feld *f);
+                  ^~~~~~
+C:\Users\Timo Str�hlein\OneDrive - Duale Hochschule Baden-W�rttemberg Stuttgart\GitHub\C-Programmieren\Beispiele\doppelt_verkettete_liste.c:6:22: error: unknown type name 't_feld'
+ void up_struct_liste(t_feld *f);
+                      ^~~~~~
+C:\Users\Timo Str�hlein\OneDrive - Duale Hochschule Baden-W�rttemberg Stuttgart\GitHub\C-Programmieren\Beispiele\doppelt_verkettete_liste.c:7:13: error: unknown type name 't_feld'
+ void up_hex(t_feld *f);
+             ^~~~~~
+C:\Users\Timo Str�hlein\OneDrive - Duale Hochschule Baden-W�rttemberg Stuttgart\GitHub\C-Programmieren\Beispiele\doppelt_verkettete_liste.c: In function 'main':
+C:\Users\Timo Str�hlein\OneDrive - Duale Hochschule Baden-W�rttemberg Stuttgart\GitHub\C-Programmieren\Beispiele\doppelt_verkettete_liste.c:32:17: error: expected ';' before ':' token
+   f -> start = 0:
+                 ^
+C:\Users\Timo Str�hlein\OneDrive - Duale Hochschule Baden-W�rttemberg Stuttgart\GitHub\C-Programmieren\Beispiele\doppelt_verkettete_liste.c:41:5: warning: implicit declaration of function 'up_listeAdd' [-Wimplicit-function-declaration]
+     up_listeAdd(f);
+     ^~~~~~~~~~~
+C:\Users\Timo Str�hlein\OneDrive - Duale Hochschule Baden-W�rttemberg Stuttgart\GitHub\C-Programmieren\Beispiele\doppelt_verkettete_liste.c:43:3: warning: implicit declaration of function 'up_hex' [-Wimplicit-function-declaration]
+   up_hex(f);
+   ^~~~~~
+C:\Users\Timo Str�hlein\OneDrive - Duale Hochschule Baden-W�rttemberg Stuttgart\GitHub\C-Programmieren\Beispiele\doppelt_verkettete_liste.c: At top level:
+C:\Users\Timo Str�hlein\OneDrive - Duale Hochschule Baden-W�rttemberg Stuttgart\GitHub\C-Programmieren\Beispiele\doppelt_verkettete_liste.c:46:6: warning: conflicting types for 'up_listeAdd'
+ void up_listeAdd (t_feld *f)
+      ^~~~~~~~~~~
+C:\Users\Timo Str�hlein\OneDrive - Duale Hochschule Baden-W�rttemberg Stuttgart\GitHub\C-Programmieren\Beispiele\doppelt_verkettete_liste.c:41:5: note: previous implicit declaration of 'up_listeAdd' was here
+     up_listeAdd(f);
+     ^~~~~~~~~~~
+C:\Users\Timo Str�hlein\OneDrive - Duale Hochschule Baden-W�rttemberg Stuttgart\GitHub\C-Programmieren\Beispiele\doppelt_verkettete_liste.c: In function 'up_listeAdd':
+C:\Users\Timo Str�hlein\OneDrive - Duale Hochschule Baden-W�rttemberg Stuttgart\GitHub\C-Programmieren\Beispiele\doppelt_verkettete_liste.c:49:3: warning: implicit declaration of function 'up_struct_liste' [-Wimplicit-function-declaration]
+   up_struct_liste(f);
+   ^~~~~~~~~~~~~~~
+C:\Users\Timo Str�hlein\OneDrive - Duale Hochschule Baden-W�rttemberg Stuttgart\GitHub\C-Programmieren\Beispiele\doppelt_verkettete_liste.c: At top level:
+C:\Users\Timo Str�hlein\OneDrive - Duale Hochschule Baden-W�rttemberg Stuttgart\GitHub\C-Programmieren\Beispiele\doppelt_verkettete_liste.c:60:6: warning: conflicting types for 'up_struct_liste'
+ void up_struct_liste (t_feld *f)
+      ^~~~~~~~~~~~~~~
+C:\Users\Timo Str�hlein\OneDrive - Duale Hochschule Baden-W�rttemberg Stuttgart\GitHub\C-Programmieren\Beispiele\doppelt_verkettete_liste.c:49:3: note: previous implicit declaration of 'up_struct_liste' was here
+   up_struct_liste(f);
+   ^~~~~~~~~~~~~~~
+C:\Users\Timo Str�hlein\OneDrive - Duale Hochschule Baden-W�rttemberg Stuttgart\GitHub\C-Programmieren\Beispiele\doppelt_verkettete_liste.c:65:6: warning: conflicting types for 'up_hex'
+ void up_hex (t_feld *f)
+      ^~~~~~
+C:\Users\Timo Str�hlein\OneDrive - Duale Hochschule Baden-W�rttemberg Stuttgart\GitHub\C-Programmieren\Beispiele\doppelt_verkettete_liste.c:43:3: note: previous implicit declaration of 'up_hex' was here
+   up_hex(f);
+   ^~~~~~

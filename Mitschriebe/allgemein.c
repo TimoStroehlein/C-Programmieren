@@ -260,3 +260,21 @@ void up_datum (char *datum)
 }
 itoa(zeit -> tm_wday, htext, 10); //Zahl, Text (z.B. 13), Basis
 strcat(datum, htext);
+
+//Struktur
+//So lang wie alle Variablen - |int|float|char[]|
+struct
+{
+  int i;
+  float f;
+  char c[4];
+}zahl;
+
+//Union
+//So lang wie die längste Variable - |int| \n |float| \n |char[]|
+union
+{
+  int i;
+  float f;
+  char c[4];
+}zahl;
