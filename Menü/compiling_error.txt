@@ -1,4 +1,0 @@
-C:\Users\Timo Str�hlein\OneDrive - Duale Hochschule Baden-W�rttemberg Stuttgart\GitHub\C-Programmieren\Men�\spiel_hinzufuegen.c: In function 'lesen':
-C:\Users\Timo Str�hlein\OneDrive - Duale Hochschule Baden-W�rttemberg Stuttgart\GitHub\C-Programmieren\Men�\spiel_hinzufuegen.c:95:5: error: expected ';' before 'while'
-     while (!feof(datei))
-     ^~~~~
