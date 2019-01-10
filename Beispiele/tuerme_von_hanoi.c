@@ -1,7 +1,6 @@
 #include <stdio.h>
 #include <conio.h>
 #include <time.h>
-#include <sys\timeb.h>
 
 void up_TvH(int scheibe, int von, int nach);
 double nimmzeit(void);

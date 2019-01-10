@@ -2,9 +2,9 @@
 #include<string.h>
 #include<stdlib.h>
 
-void up_listeAdd(t_feld *f);
-void up_struct_liste(t_feld *f);
-void up_hex(t_feld *f);
+void up_listeAdd();
+void up_struct_liste();
+void up_hex();
 
 typedef struct m_dhler
 {
@@ -21,6 +21,7 @@ typedef struct
   char name[20+1];
   char vname[20+1];
   int matnr;
+
   t_dhler *mom, *start, *zwischen;
 } t_feld;
 
@@ -29,14 +30,14 @@ void main (void)
   t_feld feld;
   t_feld *f = &feld;
   f -> mom = 0;
-  f -> start = 0:
+  f -> start = 0;
   f -> zwischen = 0;
 
   int i;
   for (i = 0; i < 3; i++)
   {
     printf("Gib %d. Namen ein: ", i+1);
-    scanf("%s", f -> name);
+    scanf("%s", f -> vname);
     fflush(stdin);
     up_listeAdd(f);
   }
