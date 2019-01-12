@@ -86,5 +86,5 @@ void spiele_sortieren (void)
   scanf("%i", &eingabe);
   fflush(stdin);
 
-  liste(eingabe+1);
+  if (eingabe >= 2) liste(eingabe+1);
 }
