@@ -11,6 +11,7 @@ void liste_bubblesort();
 void liste_feld_tauschen();
 void datei_lesen();
 void datei_schreiben();
+void datei_daten_schreiben ();
 
 typedef struct m_spiel
 {
@@ -51,7 +52,10 @@ void liste (int modus)
       getchar();
       break;
     case 1:
+      liste_anzeigen(f);
       liste_loeschen(f);
+      liste_anzeigen(f);
+      getchar();
       break;
     //Name
     case 2:
@@ -80,6 +84,9 @@ void liste (int modus)
       break;
     case 9:
       liste_bubblesort(f, 7);
+      break;
+    case 10:
+      datei_daten_schreiben(f);
       break;
 
     default:
@@ -131,7 +138,50 @@ void liste_anzeigen (t_feld *f)
 
 void liste_loeschen (t_feld *f)
 {
-
+  int i = 1;
+  int eingabe;
+  printf("Gib eine Nummer ein: ");
+  scanf("%i", &eingabe);
+  fflush(stdin);
+  f -> mom = f -> erster;
+  while (f -> mom && i++ < eingabe)
+  {
+    f -> mom = f -> mom -> danach;
+  }
+  if (f -> mom == 0)
+  {
+    //Kein Satz
+    printf("Nicht zugelassener Wert.");
+  }
+  else if (f -> mom -> danach && f -> mom -> davor)
+  {
+    //Aus Mitte
+    f -> mom -> davor -> danach = f -> mom -> danach;
+    f -> mom -> danach -> davor = f -> mom -> davor;
+    free(f -> mom);
+    f -> mom = f -> erster;
+    datei_daten_schreiben(f);
+  }
+  else if (f -> mom -> davor)
+  {
+    //Der Letzte
+    f -> mom -> davor -> danach = f -> mom -> danach;
+    free(f -> mom);
+    f -> mom = f -> erster;
+    datei_daten_schreiben(f);
+  }
+  else if (f -> mom -> danach)
+  {
+    //Der Erste
+    f -> mom -> danach -> davor = f -> mom -> davor;
+    free(f -> mom);
+    f -> mom = f -> erster;
+    datei_daten_schreiben(f);
+  }
+  else
+  {
+    free(f -> mom);
+  }
 }
 
 void liste_bubblesort (t_feld *f, int modus)
@@ -230,6 +280,24 @@ void datei_lesen (t_feld *f)
       fgets(text, 100, datei);
       anzahl_spiele++;
     }
+  }
+  fclose(datei);
+}
+
+void datei_daten_schreiben (t_feld *f)
+{
+  FILE *datei;
+  int i = 0;
+  datei = fopen("spiele.txt", "w");
+  f -> mom = f -> erster;
+  while (f -> mom && i++ < anzahl_spiele)
+  {
+    fwrite(f -> mom -> name, 20, 1, datei);
+    fwrite(f -> mom -> genre, 20, 1, datei);
+    fwrite(&f -> mom -> preis, 3, 1, datei);
+    fwrite(f -> mom -> datum, 10, 1, datei);
+    fwrite("\n", 1, 1, datei);
+    f -> mom = f -> mom -> danach;
   }
   fclose(datei);
 }

@@ -2,7 +2,7 @@
 #include <stdlib.h>
 #include <string.h>
 #include "liste.c"
-#include "datei_schreiben.c"
+//#include "datei_schreiben.c"
 
 void spiele_sortieren();
 
@@ -41,7 +41,8 @@ void main (void)
         system("cls");
         printf("Spiel Hinzuf\201gen\n");
         printf("--------------------------------------\n");
-        daten_lesen();
+        //daten_lesen();
+        liste(10);
         break;
       case 3:
         system("cls");
