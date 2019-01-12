@@ -3,7 +3,7 @@
 #include <stdlib.h>
 
 void daten_lesen();
-void datei_daten_schreiben();
+void datei_daten_schreiben_neu();
 
 struct
 {
@@ -31,10 +31,10 @@ void daten_lesen (void)
   scanf("%[^\n]s", spiel.datum);
   fflush(stdin);
 
-  datei_daten_schreiben();
+  datei_daten_schreiben_neu();
 }
 
-void datei_daten_schreiben (void)
+void datei_daten_schreiben_neu (void)
 {
   FILE *datei;
   datei = fopen("spiele.txt", "a+");

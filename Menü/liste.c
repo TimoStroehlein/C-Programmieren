@@ -11,7 +11,7 @@ void liste_bubblesort();
 void liste_feld_tauschen();
 void datei_lesen();
 void datei_schreiben();
-void datei_daten_schreiben ();
+void datei_daten_schreiben();
 
 typedef struct m_spiel
 {
@@ -85,9 +85,6 @@ void liste (int modus)
     case 9:
       liste_bubblesort(f, 7);
       break;
-    case 10:
-      datei_daten_schreiben(f);
-      break;
 
     default:
       printf("Modus nicht bekannt.\n");
@@ -140,8 +137,10 @@ void liste_loeschen (t_feld *f)
 {
   int i = 1;
   int eingabe;
+  printf("--------------------------------------\n");
   printf("Gib eine Nummer ein: ");
   scanf("%i", &eingabe);
+  printf("--------------------------------------\n");
   fflush(stdin);
   f -> mom = f -> erster;
   while (f -> mom && i++ < eingabe)
