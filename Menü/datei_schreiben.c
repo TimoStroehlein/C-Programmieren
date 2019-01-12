@@ -42,5 +42,10 @@ void datei_daten_schreiben (void)
   fwrite(spiel.genre, 20, 1, datei);
   fwrite(&spiel.preis, 3, 1, datei);
   fwrite(spiel.datum, 10, 1, datei);
+  fwrite("\n", 1, 1, datei);
   fclose(datei);
+
+  memset(spiel.name, 0, strlen(spiel.name));
+  memset(spiel.genre, 0, strlen(spiel.genre));
+  memset(spiel.datum, 0, strlen(spiel.datum));
 }

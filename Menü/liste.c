@@ -162,13 +162,13 @@ void liste_feld_tauschen (t_feld *f)
 void datei_lesen (t_feld *f)
 {
   FILE *datei;
-  char text[60];
+  char text[100];
   anzahl_spiele = 0;
   if (!datei) printf("Datei ist leer");
   else
   {
     datei = fopen("spiele.txt", "a+");
-    fgets(text, 60, datei);
+    fgets(text, 100, datei);
     while (!feof(datei))
     {
       strncpy(f -> name, text, 20);
@@ -180,7 +180,7 @@ void datei_lesen (t_feld *f)
       strncpy(f -> datum, text+43, 10);
 
       liste_add(f);
-      fgets(text, 60, datei);
+      fgets(text, 100, datei);
       anzahl_spiele++;
     }
   }
