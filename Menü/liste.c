@@ -56,58 +56,41 @@ void liste (int modus)
     //Name
     case 2:
       liste_bubblesort(f, 0);
-      system("cls");
-      liste_anzeigen(f);
-      getchar();
       break;
     case 3:
       liste_bubblesort(f, 1);
-      system("cls");
-      liste_anzeigen(f);
-      getchar();
       break;
     //Genre
     case 4:
       liste_bubblesort(f, 2);
-      system("cls");
-      liste_anzeigen(f);
-      getchar();
       break;
     case 5:
       liste_bubblesort(f, 3);
-      system("cls");
-      liste_anzeigen(f);
-      getchar();
       break;
     //Preis
     case 6:
       liste_bubblesort(f, 4);
-      system("cls");
-      liste_anzeigen(f);
-      getchar();
       break;
     case 7:
       liste_bubblesort(f, 5);
-      system("cls");
-      liste_anzeigen(f);
-      getchar();
       break;
     //Datum
     case 8:
-      liste_bubblesort(f, 6);
-      system("cls");
-      liste_anzeigen(f);
-      getchar();
+      liste_bubblesort(f, 6);;
       break;
     case 9:
       liste_bubblesort(f, 7);
-      system("cls");
-      liste_anzeigen(f);
-      getchar();
       break;
+
     default:
       printf("Modus nicht bekannt.\n");
       break;
+  }
+  if (modus >= 2)
+  {
+    system("cls");
+    liste_anzeigen(f);
+    getchar();
   }
 }
 
