@@ -11,7 +11,7 @@ void main (void)
       if (mat[j] > mat[j+1])
       {
         temp = mat[j];
-        mat[3] = mat[j+1];
+        mat[j] = mat[j+1];
         mat[j+1] = temp;
       }
       /*

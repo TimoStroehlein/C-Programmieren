@@ -1,0 +1,46 @@
+#include <stdio.h>
+#include <string.h>
+#include <stdlib.h>
+
+void daten_lesen();
+void datei_daten_schreiben();
+
+struct
+{
+  char name[20+1];
+  char genre[20+1];
+  int preis;
+  char datum[10+1];
+} spiel;
+
+void daten_lesen (void)
+{
+  printf("Name: ");
+  scanf("%s", spiel.name);
+  fflush(stdin);
+
+  printf("Genre: ");
+  scanf("%s", spiel.genre);
+  fflush(stdin);
+
+  printf("Preis: ");
+  scanf("%i", &spiel.preis);
+  fflush(stdin);
+
+  printf("Datum: ");
+  scanf("%s", spiel.datum);
+  fflush(stdin);
+
+  datei_daten_schreiben();
+}
+
+void datei_daten_schreiben (void)
+{
+  FILE *datei;
+  datei = fopen("spiele.txt", "a+");
+  fwrite(spiel.name, 20, 1, datei);
+  fwrite(spiel.genre, 20, 1, datei);
+  fwrite(&spiel.preis, 3, 1, datei);
+  fwrite(spiel.datum, 10, 1, datei);
+  fclose(datei);
+}

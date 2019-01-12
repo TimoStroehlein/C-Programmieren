@@ -19,7 +19,7 @@ void main (void)
 
 }
 
-up_loesche(t_feld *f)
+void up_loesche(t_feld *f)
 {
   int i = 1;
   up_ausgabe(f);

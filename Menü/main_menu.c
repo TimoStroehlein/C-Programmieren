@@ -1,7 +1,10 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-#include "spiel_hinzufuegen.c"
+#include "liste.c"
+#include "datei_schreiben.c"
+
+void spiele_sortieren();
 
 void main (void)
 {
@@ -13,10 +16,9 @@ void main (void)
     printf("Hauptmen\201\n");
     printf("--------------------------------------\n");
     printf("[1] Spiele Anzeigen\n");
-    printf("[2] Spiele Hinzuf\201gen\n");
-    printf("[3] Funktion 3\n");
-    printf("[4] Funktion 4\n");
-    printf("[5] Funktion 5\n");
+    printf("[2] Spiel Hinzuf\201gen\n");
+    printf("[3] Spiel L\224schen\n");
+    printf("[4] Spiele Sortieren\n");
     printf("--------------------------------------\n");
     printf("[0] Beenden\n");
 
@@ -25,30 +27,32 @@ void main (void)
 
     switch (eingabe)
     {
-      case 1:
-        system("cls");
-        printf("Funktion 1 wurde ausgef\201hrt\n");
-        liste_lesen();
-        break;
-      case 2:
-        system("cls");
-        printf("Funktion 2 wurde ausgef\201hrt\n");
-        break;
-      case 3:
-        system("cls");
-        printf("Funktion 3 wurde ausgef\201hrt\n");
-        break;
-      case 4:
-        system("cls");
-        printf("Funktion 4 wurde ausgef\201hrt\n");
-        break;
-      case 5:
-        system("cls");
-        printf("Funktion 5 wurde ausgef\201hrt\n");
-        break;
       case 0:
         system("cls");
         printf("Programm Beendet.\n");
+        break;
+      case 1:
+        system("cls");
+        printf("Spiele\n");
+        printf("--------------------------------------\n");
+        liste(0);
+        break;
+      case 2:
+        system("cls");
+        printf("Spiel Hinzuf\201gen\n");
+        printf("--------------------------------------\n");
+        daten_lesen();
+        break;
+      case 3:
+        system("cls");
+        printf("Spiel L\224schen\n");
+        printf("--------------------------------------\n");
+        break;
+      case 4:
+        system("cls");
+        printf("Spiele sortieren\n");
+        printf("--------------------------------------\n");
+        spiele_sortieren();
         break;
       default:
         system("cls");
@@ -56,5 +60,38 @@ void main (void)
         printf("Programm Beendet.\n");
         break;
     }
+  }
+}
+
+void spiele_sortieren (void)
+{
+  int eingabe;
+
+  system("cls");
+
+  printf("Sortieren\n");
+  printf("--------------------------------------\n");
+  printf("[1] Namen Aufsteigend (A-Z)\n");
+  printf("[2] Namen Absteigend (Z-A)\n");
+  printf("--------------------------------------\n");
+  printf("[0] Beenden\n");
+
+  scanf("%i", &eingabe);
+  fflush(stdin);
+
+  switch (eingabe)
+  {
+    case 0:
+      system("cls");
+      break;
+    case 1:
+      liste(1);
+      break;
+    case 2:
+      liste(2);
+      break;
+    default:
+      printf("Zahl nicht gefunden.\n");
+      break;
   }
 }
