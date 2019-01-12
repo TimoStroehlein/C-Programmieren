@@ -16,11 +16,11 @@ struct
 void daten_lesen (void)
 {
   printf("Name: ");
-  scanf("%s", spiel.name);
+  scanf("%[^\n]s", spiel.name);
   fflush(stdin);
 
   printf("Genre: ");
-  scanf("%s", spiel.genre);
+  scanf("%[^\n]s", spiel.genre);
   fflush(stdin);
 
   printf("Preis: ");
@@ -28,7 +28,7 @@ void daten_lesen (void)
   fflush(stdin);
 
   printf("Datum: ");
-  scanf("%s", spiel.datum);
+  scanf("%[^\n]s", spiel.datum);
   fflush(stdin);
 
   datei_daten_schreiben();

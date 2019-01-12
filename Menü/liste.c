@@ -51,22 +51,63 @@ void liste (int modus)
       getchar();
       break;
     case 1:
+      liste_loeschen(f);
+      break;
+    //Name
+    case 2:
       liste_bubblesort(f, 0);
       system("cls");
       liste_anzeigen(f);
       getchar();
       break;
-    case 2:
+    case 3:
       liste_bubblesort(f, 1);
       system("cls");
       liste_anzeigen(f);
       getchar();
       break;
-    case 3:
-      liste_loeschen(f);
+    //Genre
+    case 4:
+      liste_bubblesort(f, 2);
+      system("cls");
+      liste_anzeigen(f);
+      getchar();
+      break;
+    case 5:
+      liste_bubblesort(f, 3);
+      system("cls");
+      liste_anzeigen(f);
+      getchar();
+      break;
+    //Preis
+    case 6:
+      liste_bubblesort(f, 4);
+      system("cls");
+      liste_anzeigen(f);
+      getchar();
+      break;
+    case 7:
+      liste_bubblesort(f, 5);
+      system("cls");
+      liste_anzeigen(f);
+      getchar();
+      break;
+    //Datum
+    case 8:
+      liste_bubblesort(f, 6);
+      system("cls");
+      liste_anzeigen(f);
+      getchar();
+      break;
+    case 9:
+      liste_bubblesort(f, 7);
+      system("cls");
+      liste_anzeigen(f);
+      getchar();
       break;
     default:
       printf("Modus nicht bekannt.\n");
+      break;
   }
 }
 
@@ -121,12 +162,35 @@ void liste_bubblesort (t_feld *f, int modus)
     {
       switch (modus)
       {
+        //Name
         case 0:
           if (strcmp(f -> mom -> name, f -> mom -> danach -> name) > 0) liste_feld_tauschen(f); //Aufsteigend sortieren (A-Z)
           break;
         case 1:
           if (strcmp(f -> mom -> name, f -> mom -> danach -> name) < 0) liste_feld_tauschen(f); //Absteigend sortieren (Z-A)
           break;
+        //Genre
+        case 2:
+          if (strcmp(f -> mom -> genre, f -> mom -> danach -> genre) > 0) liste_feld_tauschen(f); //Aufsteigend sortieren (A-Z)
+          break;
+        case 3:
+          if (strcmp(f -> mom -> genre, f -> mom -> danach -> genre) < 0) liste_feld_tauschen(f); //Absteigend sortieren (Z-A)
+          break;
+        //Preis
+        case 4:
+          if (f -> mom -> preis > f -> mom -> danach -> preis) liste_feld_tauschen(f); //Aufsteigend sortieren
+          break;
+        case 5:
+          if (f -> mom -> preis < f -> mom -> danach -> preis) liste_feld_tauschen(f); //Absteigend sortieren
+          break;
+        //Datum
+        case 6:
+          if (strcmp((f -> mom -> datum)+6, (f -> mom -> danach -> datum)+6) > 0) liste_feld_tauschen(f); //Aufsteigend sortieren (A-Z)
+          break;
+        case 7:
+          if (strcmp((f -> mom -> datum)+6, (f -> mom -> danach -> datum)+6) < 0) liste_feld_tauschen(f); //Absteigend sortieren (Z-A)
+          break;
+
         default:
           printf("Modus nicht bekannt.\n");
           break;

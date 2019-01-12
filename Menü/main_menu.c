@@ -47,7 +47,7 @@ void main (void)
         system("cls");
         printf("Spiel L\224schen\n");
         printf("--------------------------------------\n");
-        liste(3);
+        liste(1);
         break;
       case 4:
         system("cls");
@@ -72,27 +72,19 @@ void spiele_sortieren (void)
 
   printf("Sortieren\n");
   printf("--------------------------------------\n");
-  printf("[1] Namen Aufsteigend (A-Z)\n");
-  printf("[2] Namen Absteigend (Z-A)\n");
+  printf("[1] Name Aufsteigend (A-Z)\n");
+  printf("[2] Name Absteigend (Z-A)\n");
+  printf("[3] Genre Aufsteigend (A-Z)\n");
+  printf("[4] Genre Absteigend (Z-A)\n");
+  printf("[5] Preis Aufsteigend\n");
+  printf("[6] Preis Absteigend\n");
+  printf("[7] Datum Aufsteigend\n");
+  printf("[8] Datum Absteigend\n");
   printf("--------------------------------------\n");
   printf("[0] Beenden\n");
 
   scanf("%i", &eingabe);
   fflush(stdin);
 
-  switch (eingabe)
-  {
-    case 0:
-      system("cls");
-      break;
-    case 1:
-      liste(1);
-      break;
-    case 2:
-      liste(2);
-      break;
-    default:
-      printf("Zahl nicht gefunden.\n");
-      break;
-  }
+  liste(eingabe+1);
 }
