@@ -62,7 +62,7 @@ void liste (int modus)
       liste_anzeigen(f);
       getchar();
       break;
-    case 2:
+    case 3:
       liste_loeschen(f);
       break;
     default:

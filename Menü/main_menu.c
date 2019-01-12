@@ -47,7 +47,7 @@ void main (void)
         system("cls");
         printf("Spiel L\224schen\n");
         printf("--------------------------------------\n");
-        liste()
+        liste(3);
         break;
       case 4:
         system("cls");
