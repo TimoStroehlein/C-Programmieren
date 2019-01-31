@@ -44,5 +44,4 @@ void daten_einlesen_datei (t_feld *f)
   }
   fclose(datei_1);
   fclose(datei_2);
-  printf("Daten wurde eingelesen\n");
 }

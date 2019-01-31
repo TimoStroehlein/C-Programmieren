@@ -26,12 +26,13 @@ void liste_hinzufuegen_daten (t_feld *f)
 void liste_anzeigen (t_feld *f)
 {
   int anzahl;
-  printf("Anzahl an Datens\204tzen: ");
+  printf("Anzahl an Datens\204tzen (0 um alle Datens\204tze anzuzeigen): ");
   scanf("%i", &anzahl);
   fflush(stdin);
   printf("   |--------------Name--------------|--------------Genre-------------|--Preis--|---------Datum--------|\n");
   f -> mom = f -> erster;
   int i = 1;
+  if (anzahl == 0) anzahl = anzahl_spiele;
   while (f -> mom != NULL && i < anzahl+1)
   {
     printf("%-2i | %-30s | %-30s | %-7i | %-20s |\n",i , f -> mom -> name, f -> mom -> genre, f -> mom -> preis, f -> mom -> datum);

@@ -86,9 +86,8 @@ void main (void)
       //Spiele speichern
       case 6:
         system("cls");
-        printf("Spiele speichern\n");
-        printf("--------------------------------------\n");
         datei_daten_schreiben(f);
+        printf("Die Spiele wurden gespeichert\n");
         printf("--------------------------------------\n");
         printf("Enter zum Verlassen...\n");
         getchar();
@@ -138,6 +137,8 @@ void main_spiele_einlesen (t_feld *f)
       break;
     case 2:
       system("cls");
+      printf("Einlesen\n");
+      printf("--------------------------------------\n");
       daten_einlesen_datei(f);
       datei_daten_lesen(f);
       break;
@@ -203,24 +204,28 @@ void main_spiele_sortieren_bubblesort (t_feld *f)
     case 0:
       break;
     case 1:
-      liste_anzeigen(f);
       liste_bubblesort(f, eingabe);
       liste_anzeigen(f);
       break;
     case 2:
       liste_bubblesort(f, eingabe);
+      liste_anzeigen(f);
       break;
     case 3:
       liste_bubblesort(f, eingabe);
+      liste_anzeigen(f);
       break;
     case 4:
       liste_bubblesort(f, eingabe);
+      liste_anzeigen(f);
       break;
     case 5:
       liste_bubblesort(f, eingabe);
+      liste_anzeigen(f);
       break;
     case 6:
       liste_bubblesort(f, eingabe);
+      liste_anzeigen(f);
       break;
     default:
       break;
