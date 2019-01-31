@@ -1,0 +1,21 @@
+C:\Users\Timo Str�hlein\OneDrive - Duale Hochschule Baden-W�rttemberg Stuttgart\GitHub\C-Programmieren\Refer Aufgaben\temp.c: In function 'loeschePlayliste':
+C:\Users\Timo Str�hlein\OneDrive - Duale Hochschule Baden-W�rttemberg Stuttgart\GitHub\C-Programmieren\Refer Aufgaben\temp.c:70:15: warning: passing argument 1 of 'strcmp' from incompatible pointer type [-Wincompatible-pointer-types]
+     if(strcmp(l -> start = l -> mom)
+               ^
+In file included from C:\Users\Timo Str�hlein\OneDrive - Duale Hochschule Baden-W�rttemberg Stuttgart\GitHub\C-Programmieren\Refer Aufgaben\temp.c:3:0:
+c:\mingw\include\string.h:77:38: note: expected 'const char *' but argument is of type 'lied * {aka struct lied *}'
+ _CRTIMP __cdecl __MINGW_NOTHROW  int strcmp (const char *, const char *) __MINGW_ATTRIB_PURE;
+                                      ^~~~~~
+C:\Users\Timo Str�hlein\OneDrive - Duale Hochschule Baden-W�rttemberg Stuttgart\GitHub\C-Programmieren\Refer Aufgaben\temp.c:70:8: error: too few arguments to function 'strcmp'
+     if(strcmp(l -> start = l -> mom)
+        ^~~~~~
+In file included from C:\Users\Timo Str�hlein\OneDrive - Duale Hochschule Baden-W�rttemberg Stuttgart\GitHub\C-Programmieren\Refer Aufgaben\temp.c:3:0:
+c:\mingw\include\string.h:77:38: note: declared here
+ _CRTIMP __cdecl __MINGW_NOTHROW  int strcmp (const char *, const char *) __MINGW_ATTRIB_PURE;
+                                      ^~~~~~
+C:\Users\Timo Str�hlein\OneDrive - Duale Hochschule Baden-W�rttemberg Stuttgart\GitHub\C-Programmieren\Refer Aufgaben\temp.c:71:5: error: expected ')' before '{' token
+     {
+     ^
+C:\Users\Timo Str�hlein\OneDrive - Duale Hochschule Baden-W�rttemberg Stuttgart\GitHub\C-Programmieren\Refer Aufgaben\temp.c:76:5: error: expected expression before '}' token
+     }
+     ^

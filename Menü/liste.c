@@ -1,107 +1,9 @@
-#include <stdio.h>
-#include <string.h>
-#include <stdlib.h>
+#include "header.h"
 
-void liste();
-void liste_add();
-void liste_add_items();
-void liste_anzeigen();
-void liste_loeschen();
-void liste_bubblesort();
-void liste_feld_tauschen();
-void datei_lesen();
-void datei_schreiben();
-void datei_daten_schreiben();
-
-typedef struct m_spiel
-{
-  char name[20+1];
-  char genre[20+1];
-  int preis;
-  char datum[10+1];
-
-  struct m_spiel *davor;
-  struct m_spiel *danach;
-} t_spiel;
-
-typedef struct
-{
-  char name[20+1];
-  char genre[20+1];
-  int preis;
-  char datum[10+1];
-
-  t_spiel *mom, *erster, *letzter;
-} t_feld;
-
-int anzahl_spiele;
-
-void liste (int modus)
-{
-  t_feld feld;
-  t_feld *f = &feld;
-  f -> mom = 0;
-  f -> erster = 0;
-  f -> letzter = 0;
-  datei_lesen(f);
-
-  switch (modus)
-  {
-    case 0:
-      liste_anzeigen(f);
-      getchar();
-      break;
-    case 1:
-      liste_anzeigen(f);
-      liste_loeschen(f);
-      liste_anzeigen(f);
-      getchar();
-      break;
-    //Name
-    case 2:
-      liste_bubblesort(f, 0);
-      break;
-    case 3:
-      liste_bubblesort(f, 1);
-      break;
-    //Genre
-    case 4:
-      liste_bubblesort(f, 2);
-      break;
-    case 5:
-      liste_bubblesort(f, 3);
-      break;
-    //Preis
-    case 6:
-      liste_bubblesort(f, 4);
-      break;
-    case 7:
-      liste_bubblesort(f, 5);
-      break;
-    //Datum
-    case 8:
-      liste_bubblesort(f, 6);;
-      break;
-    case 9:
-      liste_bubblesort(f, 7);
-      break;
-
-    default:
-      printf("Modus nicht bekannt.\n");
-      break;
-  }
-  if (modus >= 2)
-  {
-    system("cls");
-    liste_anzeigen(f);
-    getchar();
-  }
-}
-
-void liste_add (t_feld *f)
+void liste_hinzufuegen (t_feld *f)
 {
   f -> mom = (t_spiel*)malloc(sizeof(t_spiel));  //Reserviert Größe des structs im Hauptspeicher, Typecast nötig, da return value von malloc Void-Zeiger ist
-  liste_add_items(f);  //Kopiert eingelesenes in die Liste
+  liste_hinzufuegen_daten(f);  //Kopiert eingelesenes in die Liste
 
   f -> mom -> davor = f -> letzter;
   f -> mom -> danach = 0;
@@ -110,9 +12,10 @@ void liste_add (t_feld *f)
   else f -> letzter -> danach = f-> mom;
 
   f -> letzter = f -> mom;
+  anzahl_spiele++;
 }
 
-void liste_add_items (t_feld *f)
+void liste_hinzufuegen_daten (t_feld *f)
 {
   strcpy(f -> mom -> name, f -> name);
   strcpy(f -> mom -> genre, f -> genre);
@@ -122,12 +25,16 @@ void liste_add_items (t_feld *f)
 
 void liste_anzeigen (t_feld *f)
 {
-  printf("  |---------Name---------|---------Genre---------|--Preis--|----Datum----|\n");
+  int anzahl;
+  printf("Anzahl an Datens\204tzen: ");
+  scanf("%i", &anzahl);
+  fflush(stdin);
+  printf("   |--------------Name--------------|--------------Genre-------------|--Preis--|---------Datum--------|\n");
   f -> mom = f -> erster;
   int i = 1;
-  while (f -> mom != NULL)
+  while (f -> mom != NULL && i < anzahl+1)
   {
-    printf("%i | %-20s | %-21s | %-7i | %-11s |\n",i , f -> mom -> name, f -> mom -> genre, f -> mom -> preis, f -> mom -> datum);
+    printf("%-2i | %-30s | %-30s | %-7i | %-20s |\n",i , f -> mom -> name, f -> mom -> genre, f -> mom -> preis, f -> mom -> datum);
     f -> mom = f -> mom -> danach;
     i++;
   }
@@ -135,168 +42,82 @@ void liste_anzeigen (t_feld *f)
 
 void liste_loeschen (t_feld *f)
 {
-  int i = 1;
-  int eingabe;
+  int i, k, anfang, ende, anzahl;
   printf("--------------------------------------\n");
-  printf("Gib eine Nummer ein: ");
-  scanf("%i", &eingabe);
-  printf("--------------------------------------\n");
+  printf("L\224schen von Datensatz: ");
+  scanf("%i", &anfang);
   fflush(stdin);
-  f -> mom = f -> erster;
-  while (f -> mom && i++ < eingabe)
-  {
-    f -> mom = f -> mom -> danach;
-  }
-  if (f -> mom == 0)
-  {
-    //Kein Satz
-    printf("Nicht zugelassener Wert.");
-  }
-  else if (f -> mom -> danach && f -> mom -> davor)
-  {
-    //Aus Mitte
-    f -> mom -> davor -> danach = f -> mom -> danach;
-    f -> mom -> danach -> davor = f -> mom -> davor;
-    free(f -> mom);
-    f -> mom = f -> erster;
-    datei_daten_schreiben(f);
-  }
-  else if (f -> mom -> davor)
-  {
-    //Der Letzte
-    f -> mom -> davor -> danach = f -> mom -> danach;
-    free(f -> mom);
-    f -> mom = f -> erster;
-    datei_daten_schreiben(f);
-  }
-  else if (f -> mom -> danach)
-  {
-    //Der Erste
-    f -> mom -> danach -> davor = f -> mom -> davor;
-    free(f -> mom);
-    f -> mom = f -> erster;
-    datei_daten_schreiben(f);
-  }
-  else
-  {
-    free(f -> mom);
-  }
-}
+  printf("bis Datensatz: ");
+  scanf("%i", &ende);
+  fflush(stdin);
+  anzahl = ende - anfang;
 
-void liste_bubblesort (t_feld *f, int modus)
-{
   f -> mom = f -> erster;
-  char temp[20+1];
-  int temp2;
-  for (int i = 0; i < anzahl_spiele - 1; i++)
+  for (k = 0; k < anzahl + 1; k++)
   {
-    for (int j = 0; j < anzahl_spiele - 1; j++)
+    i = 1;
+    while (f -> mom && i < ende - k)
     {
-      switch (modus)
-      {
-        //Name
-        case 0:
-          if (strcmp(f -> mom -> name, f -> mom -> danach -> name) > 0) liste_feld_tauschen(f); //Aufsteigend sortieren (A-Z)
-          break;
-        case 1:
-          if (strcmp(f -> mom -> name, f -> mom -> danach -> name) < 0) liste_feld_tauschen(f); //Absteigend sortieren (Z-A)
-          break;
-        //Genre
-        case 2:
-          if (strcmp(f -> mom -> genre, f -> mom -> danach -> genre) > 0) liste_feld_tauschen(f); //Aufsteigend sortieren (A-Z)
-          break;
-        case 3:
-          if (strcmp(f -> mom -> genre, f -> mom -> danach -> genre) < 0) liste_feld_tauschen(f); //Absteigend sortieren (Z-A)
-          break;
-        //Preis
-        case 4:
-          if (f -> mom -> preis > f -> mom -> danach -> preis) liste_feld_tauschen(f); //Aufsteigend sortieren
-          break;
-        case 5:
-          if (f -> mom -> preis < f -> mom -> danach -> preis) liste_feld_tauschen(f); //Absteigend sortieren
-          break;
-        //Datum
-        case 6:
-          if (strcmp((f -> mom -> datum)+6, (f -> mom -> danach -> datum)+6) > 0) liste_feld_tauschen(f); //Aufsteigend sortieren (A-Z)
-          break;
-        case 7:
-          if (strcmp((f -> mom -> datum)+6, (f -> mom -> danach -> datum)+6) < 0) liste_feld_tauschen(f); //Absteigend sortieren (Z-A)
-          break;
-
-        default:
-          printf("Modus nicht bekannt.\n");
-          break;
-      }
       f -> mom = f -> mom -> danach;
+      i++;
     }
-    f -> mom = f -> erster;
-  }
-}
-
-void liste_feld_tauschen (t_feld *f)
-{
-  char temp[20+1];
-  int temp2;
-
-  strcpy(temp, f -> mom -> name);
-  strcpy(f -> mom -> name, f -> mom -> danach -> name);
-  strcpy(f -> mom -> danach -> name, temp);
-
-  strcpy(temp, f -> mom -> genre);
-  strcpy(f -> mom -> genre, f -> mom -> danach -> genre);
-  strcpy(f -> mom -> danach -> genre, temp);
-
-  temp2 = f -> mom -> preis;
-  f -> mom -> preis = f -> mom -> danach -> preis;
-  f -> mom -> danach -> preis = temp2;
-
-  strcpy(temp, f -> mom -> datum);
-  strcpy(f -> mom -> datum, f -> mom -> danach -> datum);
-  strcpy(f -> mom -> danach -> datum, temp);
-}
-
-void datei_lesen (t_feld *f)
-{
-  FILE *datei;
-  char text[100];
-  anzahl_spiele = 0;
-  if (!datei) printf("Datei ist leer");
-  else
-  {
-    datei = fopen("spiele.txt", "a+");
-    fgets(text, 100, datei);
-    while (!feof(datei))
+    if (f -> mom == 0)
     {
-      strncpy(f -> name, text, 20);
-      strncpy(f -> genre, text+20, 20);
-      char preis[3];
-      strncpy(preis, text+40, 3);
-      f -> preis = 0;
-      for (int i = 0; i < sizeof(preis); i++) f -> preis += (int)preis[i];
-      strncpy(f -> datum, text+43, 10);
-
-      liste_add(f);
-      fgets(text, 100, datei);
-      anzahl_spiele++;
+      //Kein Satz
+      printf("Nicht zugelassener Wert.");
+    }
+    else if (f -> mom -> danach && f -> mom -> davor)
+    {
+      //Aus Mitte
+      f -> mom -> davor -> danach = f -> mom -> danach;
+      f -> mom -> danach -> davor = f -> mom -> davor;
+      free(f -> mom);
+      f -> mom = f -> erster;
+      anzahl_spiele--;
+    }
+    else if (f -> mom -> davor)
+    {
+      //Der Letzte
+      f -> mom -> davor -> danach = 0;
+      f -> letzter = f -> mom -> davor;
+      free(f -> mom);
+      f -> mom = f -> erster;
+      anzahl_spiele--;
+    }
+    else if (f -> mom -> danach)
+    {
+      //Der Erste
+      f -> mom -> danach -> davor = 0;
+      f -> erster = f -> mom -> danach;
+      free(f -> mom);
+      f -> mom = f -> erster;
+      anzahl_spiele--;
+    }
+    else
+    {
+      free(f -> mom);
+      anzahl_spiele--;
     }
   }
-  fclose(datei);
 }
 
-void datei_daten_schreiben (t_feld *f)
+void hex (t_feld *f)
 {
-  FILE *datei;
-  int i = 0;
-  datei = fopen("spiele.txt", "w");
   f -> mom = f -> erster;
-  while (f -> mom && i++ < anzahl_spiele)
+  printf("%-10s %-10s %-5s %-10s %-7s %-7s %-7s", "Name", "Genre", "Preis", "Datum", "mom", "davor", "danach");
+  while (f -> mom)
   {
-    fwrite(f -> mom -> name, 20, 1, datei);
-    fwrite(f -> mom -> genre, 20, 1, datei);
-    fwrite(&f -> mom -> preis, 3, 1, datei);
-    fwrite(f -> mom -> datum, 10, 1, datei);
-    fwrite("\n", 1, 1, datei);
+    printf("\n%-10s %-10s %-5i %-10s %-7x %-7x %-7x",
+      f -> mom -> name,
+      f -> mom -> genre,
+      f -> mom -> preis,
+      f -> mom -> datum,
+      f -> mom,
+      f -> mom -> davor,
+      f -> mom -> danach);
+
     f -> mom = f -> mom -> danach;
   }
-  fclose(datei);
+  printf("\nerster : %-7x", f -> erster);
+  printf("\nletzter: %-7x", f -> letzter);
 }
