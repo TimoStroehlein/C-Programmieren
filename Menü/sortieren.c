@@ -31,7 +31,7 @@ void liste_bubblesort (t_feld *f, int eingabe)
           if (f -> mom -> preis < f -> mom -> danach -> preis) liste_feld_tauschen(f); //Absteigend sortieren
           break;
         default:
-          printf("Modus nicht bekannt.\n");
+          printf("Eingabe nicht bekannt.\n");
           break;
       }
       f -> mom = f -> mom -> danach;
@@ -40,57 +40,100 @@ void liste_bubblesort (t_feld *f, int eingabe)
   }
 }
 
-void liste_quicksort (t_feld *f, int eingabe)
+void liste_quicksort (t_feld *f, int links, int rechts, int eingabe)
 {
-/*
-  t_feld *ili, *ire, *med;
-  t_feld *links = f -> erster;
-  t_feld *rechts = f -> letzter;
-  ili = links, ire = rechts;
-  med = (links + rechts) / 2;
+  int ili = links, ire = rechts, imed = (links + rechts) / 2, i = 0;
 
   while (ili < ire)
   {
-    while (f[ili] < f[med])
+    //Aufsteigend sortieren
+    if (eingabe == 1 || eingabe == 3)
     {
-      ili++;
+      while (strcmp(liste_feld_char(f, ili, eingabe), liste_feld_char(f, imed, eingabe)) < 0) ili++;
+      while (strcmp(liste_feld_char(f, ire, eingabe), liste_feld_char(f, imed, eingabe)) > 0) ire--;
     }
-    while (f[ire] > f[med])
+    else if (eingabe == 5)
     {
-      ire--;
+      while (liste_feld_int(f, ili, eingabe) < liste_feld_int(f, imed, eingabe)) ili++;
+      while (liste_feld_int(f, ire, eingabe) > liste_feld_int(f, imed, eingabe)) ire--;
     }
-    tausche f[ili], f[ire];
-    if (ili == med)
+    //Absteigend sortieren
+    if (eingabe == 2 || eingabe == 4)
     {
-      med = ire;
+      while (strcmp(liste_feld_char(f, ili, eingabe), liste_feld_char(f, imed, eingabe)) > 0) ili++;
+      while (strcmp(liste_feld_char(f, ire, eingabe), liste_feld_char(f, imed, eingabe)) < 0) ire--;
     }
-    else if (ire == med)
+    else if (eingabe == 6)
     {
-      med = ili;
+      while (liste_feld_int(f, ili, eingabe) > liste_feld_int(f, imed, eingabe)) ili++;
+      while (liste_feld_int(f, ire, eingabe) < liste_feld_int(f, imed, eingabe)) ire--;
     }
-    if (ili < med)
-    {
-      ili++;
-    }
-    if (ire > med)
-    {
-      ire--;
-    }
+    //Felder tauschen anhand vom Index
+    liste_felder_tauschen_index(f, ili, ire);
+    if (ili == imed) imed = ire;
+    else if (ire == imed) imed = ili;
+    if (ili < imed) ili++;
+    if (ire > imed) ire--;
   }
-  if (links < med-1)
-  {
-    liste_quicksort(*f, links, med-1);
-  }
-  if (rechts > med+1)
-  {
-    liste_quicksort(*f, med+1, rechts);
-  }
-  */
+  if (links < imed - 1) liste_quicksort(f, links, imed -1, eingabe);
+  if (rechts > imed + 1) liste_quicksort(f, imed + 1, rechts, eingabe);
 }
-
+//Inhalt eines Feldes anhand einem Index bekommen
+char* liste_feld_char (t_feld *f, int index, int eingabe)
+{
+  int i = 1;
+  f -> mom = f -> erster;
+  while (f -> mom && i < index)
+  {
+    f -> mom = f -> mom -> danach;
+    i++;
+  }
+  switch (eingabe)
+  {
+    case 1:
+      return f -> mom -> name;
+      break;
+    case 2:
+      return f -> mom -> name;
+      break;
+    case 3:
+      return f -> mom -> genre;
+      break;
+    case 4:
+      return f -> mom -> genre;
+      break;
+    default:
+      return 0;
+      break;
+  }
+}
+//Inhalt eines Feldes anhand einem Index bekommen
+int liste_feld_int (t_feld *f, int index, int eingabe)
+{
+  int i = 1;
+  f -> mom = f -> erster;
+  while (f -> mom && i < index)
+  {
+    f -> mom = f -> mom -> danach;
+    i++;
+  }
+  switch (eingabe)
+  {
+    case 5:
+      return f -> mom -> preis;
+      break;
+    case 6:
+      return f -> mom -> preis;
+      break;
+    default:
+      return 0;
+      break;
+  }
+}
+//Feld mit dem Feld danach tauschen
 void liste_feld_tauschen (t_feld *f)
 {
-  char temp[30+1];
+  char temp[30];
   int temp2;
 
   strcpy(temp, f -> mom -> name);
@@ -104,4 +147,46 @@ void liste_feld_tauschen (t_feld *f)
   temp2 = f -> mom -> preis;
   f -> mom -> preis = f -> mom -> danach -> preis;
   f -> mom -> danach -> preis = temp2;
+
+  strcpy(temp, f -> mom -> datum);
+  strcpy(f -> mom -> datum, f -> mom -> danach -> datum);
+  strcpy(f -> mom -> danach -> datum, temp);
+}
+//Zwei bestimmte Felder anhand vom Index tauschen
+void liste_felder_tauschen_index (t_feld *f, int ili, int ire)
+{
+  char name[30], name2[30], genre[30], genre2[30], datum[20], datum2[20];
+  int preis, preis2, i;
+  //Daten vom linken Feld zwischenspeichern
+  i = 1;
+  f -> mom = f -> erster;
+  while (f -> mom && i++ < ili) f -> mom = f -> mom -> danach;
+  strcpy(name, f -> mom -> name);
+  strcpy(genre, f -> mom -> genre);
+  preis = f -> mom -> preis;
+  strcpy(datum, f -> mom -> datum);
+  //Daten vom rechten Feld zwischenspeichern
+  i = 1;
+  f -> mom = f -> erster;
+  while (f -> mom && i++ < ire) f -> mom = f -> mom -> danach;
+  strcpy(name2, f -> mom -> name);
+  strcpy(genre2, f -> mom -> genre);
+  preis2 = f -> mom -> preis;
+  strcpy(datum2, f -> mom -> datum);
+  //Daten vom rechten in das linke Feld speichern
+  i = 1;
+  f -> mom = f -> erster;
+  while (f -> mom && i++ < ili) f -> mom = f -> mom -> danach;
+  strcpy(f -> mom -> name, name2);
+  strcpy(f -> mom -> genre, genre2);
+  f -> mom -> preis = preis2;
+  strcpy(f -> mom -> datum, datum2);
+  i = 1;
+  //Daten vom linken in das rechte Feld speichern
+  f -> mom = f -> erster;
+  while (f -> mom && i++ < ire) f -> mom = f -> mom -> danach;
+  strcpy(f -> mom -> name, name);
+  strcpy(f -> mom -> genre, genre);
+  f -> mom -> preis = preis;
+  strcpy(f -> mom -> datum, datum);
 }

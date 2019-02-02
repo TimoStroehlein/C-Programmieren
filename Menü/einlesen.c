@@ -1,5 +1,5 @@
 #include "header.h"
-
+//Eingegebene Daten einlesen und in das Struct speichern
 void daten_einlesen_eingabe (t_feld *f)
 {
   printf("Name: ");
@@ -20,7 +20,7 @@ void daten_einlesen_eingabe (t_feld *f)
 
   liste_hinzufuegen(f);
 }
-
+//Daten aus externer Datei in die Standard Datei "spiele.txt" kopieren
 void daten_einlesen_datei (t_feld *f)
 {
   char dateiname[20], c;
@@ -31,15 +31,28 @@ void daten_einlesen_datei (t_feld *f)
   FILE *datei_1, *datei_2;
   datei_1 = fopen(dateiname, "r");
   datei_2 = fopen("spiele.txt", "w");
-
-  if (!datei_1) printf("Datei ist leer");
+  bool zeile_lesen = true;
+  int i = 0, j = 0;
+  if (!datei_1) printf("Datei ist leer\n");
   else
   {
-    c = fgetc(datei_1);
     while (!feof(datei_1))
     {
+      c = fgetc(datei_1);
+      if (c == '*') i++;
+
+      if (i == 3 && j == 3) zeile_lesen = false;
+      if (zeile_lesen && c != '*')
+      {
         fputc(c, datei_2);
-        c = fgetc(datei_1);
+      }
+      j++;
+      if (c == '\n')
+      {
+        zeile_lesen = true;
+        i = 0;
+        j = 0;
+      }
     }
   }
   fclose(datei_1);

@@ -14,7 +14,6 @@ void main (void)
   anzahl_spiele = 0;
 
   int eingabe;
-
   while (eingabe != 0)
   {
     system("cls");
@@ -23,11 +22,12 @@ void main (void)
     printf("--------------------------------------\n");
     printf("[1] Spiele aus Datei einlesen\n");
     printf("[2] Spiel aus Eingabe hinzuf\201gen\n");
-    printf("[3] Spiele sortieren\n");
-    printf("[4] Spiele anzeigen\n");
-    printf("[5] Spiele l\224schen\n");
-    printf("[6] Spiele speichern\n");
-    printf("[7] Zeiger anzeigen\n");
+    printf("[3] Spiel kopieren\n");
+    printf("[4] Spiele sortieren\n");
+    printf("[5] Spiele anzeigen\n");
+    printf("[6] Spiele l\224schen\n");
+    printf("[7] Spiele speichern\n");
+    printf("[8] Zeiger anzeigen\n");
     printf("--------------------------------------\n");
     printf("[0] Programm beenden\n");
 
@@ -55,36 +55,46 @@ void main (void)
         printf("--------------------------------------\n");
         daten_einlesen_eingabe(f);
         break;
-      //Spiele sortieren
+      //Spiel kopieren
       case 3:
+        system("cls");
+        printf("Spiel kopieren\n");
+        printf("--------------------------------------\n");
+        liste_anzeigen(f, false);
+        liste_kopieren(f);
+        liste_anzeigen(f, false);
+        printf("--------------------------------------\n");
+        printf("Enter zum Verlassen...\n");
+        getchar();
+        break;
+      //Spiele sortieren
+      case 4:
         system("cls");
         main_spiele_sortieren(f);
         getchar();
         break;
       //Spiele anzeigen
-      case 4:
+      case 5:
         system("cls");
         printf("Spiele\n");
         printf("--------------------------------------\n");
-        liste_anzeigen(f);
+        liste_anzeigen(f, true);
         printf("--------------------------------------\n");
         printf("Enter zum Verlassen...\n");
         getchar();
         break;
       //Spiele löschen
-      case 5:
+      case 6:
         system("cls");
         printf("Spiele l\224schen\n");
         printf("--------------------------------------\n");
-        liste_anzeigen(f);
-        liste_loeschen(f);
-        liste_anzeigen(f);
+        main_spiele_loeschen(f);
         printf("--------------------------------------\n");
         printf("Enter zum Verlassen...\n");
         getchar();
         break;
       //Spiele speichern
-      case 6:
+      case 7:
         system("cls");
         datei_daten_schreiben(f);
         printf("Die Spiele wurden gespeichert\n");
@@ -93,7 +103,7 @@ void main (void)
         getchar();
         break;
       //Zeiger anzeigen
-      case 7:
+      case 8:
         system("cls");
         printf("Zeiger\n");
         printf("--------------------------------------\n");
@@ -133,14 +143,56 @@ void main_spiele_einlesen (t_feld *f)
       break;
     case 1:
       system("cls");
+      printf("Einlesen\n");
+      printf("--------------------------------------\n");
+      liste_leeren(f);
       datei_daten_lesen(f);
       break;
     case 2:
       system("cls");
       printf("Einlesen\n");
       printf("--------------------------------------\n");
+      liste_leeren(f);
       daten_einlesen_datei(f);
       datei_daten_lesen(f);
+      break;
+    default:
+      break;
+  }
+}
+
+void main_spiele_loeschen (t_feld *f)
+{
+  int eingabe;
+
+  system("cls");
+
+  printf("L\224schen\n");
+  printf("--------------------------------------\n");
+  printf("[1] Ein Eintrag l\224schen\n");
+  printf("[2] Mehrere Eintr\204ge l\224schen\n");
+  printf("--------------------------------------\n");
+  printf("[0] Zur\201ck\n");
+
+  scanf("%i", &eingabe);
+  fflush(stdin);
+  system("cls");
+
+  switch (eingabe)
+  {
+    case 0:
+      break;
+    case 1:
+      printf("L\224schen\n");
+      printf("--------------------------------------\n");
+      liste_anzeigen(f, false);
+      liste_loeschen(f, false);
+      break;
+    case 2:
+      printf("L\224schen\n");
+      printf("--------------------------------------\n");
+      liste_anzeigen(f, false);
+      liste_loeschen(f, true);
       break;
     default:
       break;
@@ -204,28 +256,52 @@ void main_spiele_sortieren_bubblesort (t_feld *f)
     case 0:
       break;
     case 1:
+      printf("Bubblesort\n");
+      printf("--------------------------------------\n");
       liste_bubblesort(f, eingabe);
-      liste_anzeigen(f);
+      liste_anzeigen(f, false);
+      printf("--------------------------------------\n");
+      printf("Enter zum Verlassen...\n");
       break;
     case 2:
+      printf("Bubblesort\n");
+      printf("--------------------------------------\n");
       liste_bubblesort(f, eingabe);
-      liste_anzeigen(f);
+      liste_anzeigen(f, false);
+      printf("--------------------------------------\n");
+      printf("Enter zum Verlassen...\n");
       break;
     case 3:
+      printf("Bubblesort\n");
+      printf("--------------------------------------\n");
       liste_bubblesort(f, eingabe);
-      liste_anzeigen(f);
+      liste_anzeigen(f, false);
+      printf("--------------------------------------\n");
+      printf("Enter zum Verlassen...\n");
       break;
     case 4:
+      printf("Bubblesort\n");
+      printf("--------------------------------------\n");
       liste_bubblesort(f, eingabe);
-      liste_anzeigen(f);
+      liste_anzeigen(f, false);
+      printf("--------------------------------------\n");
+      printf("Enter zum Verlassen...\n");
       break;
     case 5:
+      printf("Bubblesort\n");
+      printf("--------------------------------------\n");
       liste_bubblesort(f, eingabe);
-      liste_anzeigen(f);
+      liste_anzeigen(f, false);
+      printf("--------------------------------------\n");
+      printf("Enter zum Verlassen...\n");
       break;
     case 6:
+      printf("Bubblesort\n");
+      printf("--------------------------------------\n");
       liste_bubblesort(f, eingabe);
-      liste_anzeigen(f);
+      liste_anzeigen(f, false);
+      printf("--------------------------------------\n");
+      printf("Enter zum Verlassen...\n");
       break;
     default:
       break;
@@ -251,22 +327,59 @@ void main_spiele_sortieren_quicksort (t_feld *f)
 
   scanf("%i", &eingabe);
   fflush(stdin);
+  system("cls");
 
   switch (eingabe)
   {
     case 0:
       break;
     case 1:
+      printf("Quicksort\n");
+      printf("--------------------------------------\n");
+      liste_quicksort(f, 1, anzahl_spiele, eingabe);
+      liste_anzeigen(f, false);
+      printf("--------------------------------------\n");
+      printf("Enter zum Verlassen...\n");
       break;
     case 2:
+      printf("Quicksort\n");
+      printf("--------------------------------------\n");
+      liste_quicksort(f, 1, anzahl_spiele, eingabe);
+      liste_anzeigen(f, false);
+      printf("--------------------------------------\n");
+      printf("Enter zum Verlassen...\n");
       break;
     case 3:
+      printf("Quicksort\n");
+      printf("--------------------------------------\n");
+      liste_quicksort(f, 1, anzahl_spiele, eingabe);
+      liste_anzeigen(f, false);
+      printf("--------------------------------------\n");
+      printf("Enter zum Verlassen...\n");
       break;
     case 4:
+      printf("Quicksort\n");
+      printf("--------------------------------------\n");
+      liste_quicksort(f, 1, anzahl_spiele, eingabe);
+      liste_anzeigen(f, false);
+      printf("--------------------------------------\n");
+      printf("Enter zum Verlassen...\n");
       break;
     case 5:
+      printf("Quicksort\n");
+      printf("--------------------------------------\n");
+      liste_quicksort(f, 1, anzahl_spiele, eingabe);
+      liste_anzeigen(f, false);
+      printf("--------------------------------------\n");
+      printf("Enter zum Verlassen...\n");
       break;
     case 6:
+      printf("Quicksort\n");
+      printf("--------------------------------------\n");
+      liste_quicksort(f, 1, anzahl_spiele, eingabe);
+      liste_anzeigen(f, false);
+      printf("--------------------------------------\n");
+      printf("Enter zum Verlassen...\n");
       break;
     default:
       break;
