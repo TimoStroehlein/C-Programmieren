@@ -9,4 +9,3 @@ frostpunk, survival, 30, 14.04.18
 hitman, shooter, 60, 13.11.18
 gta v, open world, 30, 14.04.15
 rocket league, sport, 30, 07.06.15
-ÿ

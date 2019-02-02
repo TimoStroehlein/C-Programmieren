@@ -12,7 +12,7 @@ void datei_daten_lesen (t_feld *f)
     fgets(text, 100, datei);
     while (!feof(datei))
     {
-      sscanf(text, "%[^,], %[^,], %i, %[^\n]", f -> name, f -> genre, &f -> preis, f -> datum);
+      sscanf(text, "%[^,], %[^,], %i, %[^\n]\n", f -> name, f -> genre, &f -> preis, f -> datum);
       liste_hinzufuegen(f);
       fgets(text, 100, datei);
     }
