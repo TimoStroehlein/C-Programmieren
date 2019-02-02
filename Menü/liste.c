@@ -27,7 +27,7 @@ void liste_kopieren (t_feld *f)
 {
   int i = 1, index;
   printf("--------------------------------------\n");
-  printf("Datensatz kopieren: \n");
+  printf("Spiel kopieren: \n");
   scanf("%i", &index);
   f -> mom = f -> erster;
   while (f -> mom && i < index)
@@ -84,7 +84,7 @@ void liste_anzeigen (t_feld *f, bool anzeigen_anzahl)
   int anzahl;
   if (anzeigen_anzahl)
   {
-    printf("Anzahl an Datens\204tzen (0 um alle Datens\204tze anzuzeigen): ");
+    printf("Anzahl an Spielen (0 um alle Spiele anzuzeigen): ");
     scanf("%i", &anzahl);
     fflush(stdin);
   }
@@ -111,10 +111,10 @@ void liste_loeschen (t_feld *f, bool mehrere_loeschen)
   if (mehrere_loeschen)
   {
     printf("--------------------------------------\n");
-    printf("L\224schen von Datensatz: ");
+    printf("L\224schen von Spiel: ");
     scanf("%i", &anfang);
     fflush(stdin);
-    printf("bis Datensatz: ");
+    printf("bis Spiel: ");
     scanf("%i", &ende);
     fflush(stdin);
     anzahl = ende - anfang + 1;
