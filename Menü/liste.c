@@ -181,20 +181,7 @@ void liste_loeschen (t_feld *f, bool mehrere_loeschen)
 //Alle Spiele aus dem Struct löschen
 void liste_leeren (t_feld *f)
 {
-  f -> mom = f -> letzter;
-  while (f -> mom)
-  {
-    if (f -> mom -> davor)
-    {
-      f -> mom = f -> mom -> davor;
-      free(f -> mom -> danach);
-    }
-    else
-    {
-      free(f -> mom);
-      break;
-    }
-  }
+  memset(f, 0, anzahl_spiele);
   f -> mom = 0;
   f -> erster = 0;
   f -> letzter = 0;

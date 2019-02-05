@@ -181,8 +181,8 @@ void liste_felder_tauschen_index (t_feld *f, int ili, int ire)
   strcpy(f -> mom -> genre, genre2);
   f -> mom -> preis = preis2;
   strcpy(f -> mom -> datum, datum2);
-  i = 1;
   //Daten vom linken in das rechte Feld speichern
+  i = 1;
   f -> mom = f -> erster;
   while (f -> mom && i++ < ire) f -> mom = f -> mom -> danach;
   strcpy(f -> mom -> name, name);
