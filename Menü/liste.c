@@ -51,26 +51,30 @@ void liste_kopieren (t_feld *f)
     printf("--------------------------------------\n");
     printf("Datensatz editieren (0 um zu beenden): ");
     scanf("%i", &eingabe);
-
+    fflush(stdin);
     switch (eingabe)
     {
       case 0:
         break;
       case 1:
         printf("Neuer Name: ");
-        scanf("%s", f -> name);
+        scanf("%[^\n]", f -> name);
+        fflush(stdin);
         break;
       case 2:
         printf("Neues Genre: ");
-        scanf("%s", f -> genre);
+        scanf("%[^\n]", f -> genre);
+        fflush(stdin);
         break;
       case 3:
         printf("Neuer Preis: ");
         scanf("%i", &f -> preis);
+        fflush(stdin);
         break;
       case 4:
         printf("Neues Datum: ");
-        scanf("%s", f -> datum);
+        scanf("%[^\n]", f -> datum);
+        fflush(stdin);
         break;
       default:
         break;

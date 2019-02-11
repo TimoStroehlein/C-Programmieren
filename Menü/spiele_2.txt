@@ -1,4 +1,7 @@
-***Spieleliste
+*** Kommentare
+*** Spieleliste
+*** Name, Genre, Preis, Datum
+*** -------------------------------------------
 witcher, roleplay, 60, 12.08.15
 overwatch, shooter, 20, 09.11.16
 space engineers, survival, 10, 23.07.14

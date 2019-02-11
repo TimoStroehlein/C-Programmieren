@@ -3,11 +3,11 @@
 void daten_einlesen_eingabe (t_feld *f)
 {
   printf("Name: ");
-  scanf("%[^\n]s", f -> name);
+  scanf("%[^\n]", f -> name);
   fflush(stdin);
 
   printf("Genre: ");
-  scanf("%[^\n]s", f -> genre);
+  scanf("%[^\n]", f -> genre);
   fflush(stdin);
 
   printf("Preis: ");
@@ -15,7 +15,7 @@ void daten_einlesen_eingabe (t_feld *f)
   fflush(stdin);
 
   printf("Datum: ");
-  scanf("%[^\n]s", f -> datum);
+  scanf("%[^\n]", f -> datum);
   fflush(stdin);
 
   liste_hinzufuegen(f);
@@ -40,12 +40,8 @@ void daten_einlesen_datei (t_feld *f)
     {
       c = fgetc(datei_1);
       if (c == '*') i++;
-
       if (i == 3 && j == 3) zeile_lesen = false;
-      if (zeile_lesen && c != '*')
-      {
-        fputc(c, datei_2);
-      }
+      if (zeile_lesen && c != '*') fputc(c, datei_2);
       j++;
       if (c == '\n')
       {
