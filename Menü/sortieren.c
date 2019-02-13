@@ -52,6 +52,7 @@ void liste_quicksort (t_feld *f, int links, int rechts, int eingabe)
       while (strcmp(liste_feld_char(f, ili, eingabe), liste_feld_char(f, imed, eingabe)) < 0) ili++;
       while (strcmp(liste_feld_char(f, ire, eingabe), liste_feld_char(f, imed, eingabe)) > 0) ire--;
     }
+    //Preis aufsteigend sortieren
     else if (eingabe == 5)
     {
       while (liste_feld_int(f, ili, eingabe) < liste_feld_int(f, imed, eingabe)) ili++;
@@ -63,6 +64,7 @@ void liste_quicksort (t_feld *f, int links, int rechts, int eingabe)
       while (strcmp(liste_feld_char(f, ili, eingabe), liste_feld_char(f, imed, eingabe)) > 0) ili++;
       while (strcmp(liste_feld_char(f, ire, eingabe), liste_feld_char(f, imed, eingabe)) < 0) ire--;
     }
+    //Preis absteigend sortieren
     else if (eingabe == 6)
     {
       while (liste_feld_int(f, ili, eingabe) > liste_feld_int(f, imed, eingabe)) ili++;
